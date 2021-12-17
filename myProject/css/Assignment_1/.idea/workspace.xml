@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="95609622-b078-485c-9745-4c87642d6baa" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../../New folder/MyProfile" beforeDir="false" afterPath="$PROJECT_DIR$/../../../New folder/MyProfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../myProfile" beforeDir="false" afterPath="$PROJECT_DIR$/../../../myProfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../web/CSS" beforeDir="false" afterPath="$PROJECT_DIR$/../../../web/CSS" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../web/HTML" beforeDir="false" afterPath="$PROJECT_DIR$/../../../web/HTML" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +31,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../github Assignemt/myProject/css/Assignment_1" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
@@ -60,6 +57,7 @@
       <option name="presentableId" value="Default" />
       <updated>1639402013394</updated>
       <workItem from="1639402016757" duration="344000" />
+      <workItem from="1639717525730" duration="151000" />
     </task>
     <servers />
   </component>
