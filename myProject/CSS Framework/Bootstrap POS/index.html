@@ -5,6 +5,9 @@
     <title>Pos System</title>
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link crossorigin="anonymous"
+          href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css"
+          integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" rel="stylesheet">
 </head>
 <body>
 
@@ -52,8 +55,10 @@
     </nav>
 </section>
 
-<section class="container" style="padding-top: 40px;font-size: 20px"><i class="fas fa-users" style="width: 20px;height: auto"></i>Customer</section>
-<section class="container" style="background-color: gray">
+<section class="container" style="padding-top: 40px;font-size: 20px">
+    Customer
+</section>
+<section class="container" style="background-color: #efefef">
 
     <table class="table table-success table-striped">
         <thead>
@@ -63,20 +68,66 @@
         </thead>
     </table>
 
-    <form class="col-4" style="background-color: white; padding: 20px;display: inline-block">
-        <legend style="background-color: green">Customer Search</legend>
-        <div class="mb-3">
-            <label class="form-label" for="exampleInputEmail1">Input Name/NIC/Tp Here</label>
-            <input aria-describedby="emailHelp" class="form-control" id="exampleInputEmail1" type="email">
+    <form class="col-4" style="background-color: white;display: inline-block">
+        <div class="modal-header" style="background-color: green">
+            <h5 class="modal-title">Customer Search</h5>
         </div>
-        <button class="btn btn-primary col-3" type="submit">Search</button>
-        <select class="col-3">
-            <option>Name</option>
-        </select>
+        <section style="padding: 20px">
+            <div class="mb-3">
+                <label class="form-label" for="exampleInputEmail1">Input Name/NIC/Tp Here</label>
+                <input aria-describedby="emailHelp" class="form-control" id="exampleInputEmail1" type="email">
+            </div>
+            <button class="btn btn-primary col-3" type="submit">Search</button>
+            <select class="col-3">
+                <option>Name</option>
+            </select>
+        </section>
     </form>
 
     <section class="col-6" style="display: inline-block">
-        <button class="btn btn-primary" type="button">Add New Customer</button>
+        <button class="btn btn-primary" data-bs-target="#myModal" data-bs-toggle="modal" type="button">Add New
+            Customer
+        </button>
+        <div class="modal" id="myModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header" style="background-color: green">
+                        <h5 class="modal-title">New Customer</h5>
+                        <button class="btn-close" data-bs-dismiss="modal" type="button"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                                <label class="form-label" for="exampleInputEmail20">Customer Id:</label>
+                                <input aria-describedby="emailHelp" class="form-control" id="exampleInputEmail20"
+                                       type="email">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="exampleInputPassword21">Customer Name:</label>
+                                <input class="form-control" id="exampleInputPassword21" type="password">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="exampleInputEmail23">Customer Address:</label>
+                                <input aria-describedby="emailHelp" class="form-control" id="exampleInputEmail23"
+                                       type="email">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="exampleInputPassword22">Customer Salary:</label>
+                                <input class="form-control" id="exampleInputPassword22" type="password">
+                            </div>
+                            <br>
+                            <sep></sep>
+
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <button class="btn btn-danger me-md-2" type="button">Save</button>
+                                <button class="btn btn-warning" type="button">Renew</button>
+                                <button class="btn btn-primary" type="button">Close</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
         <button class="btn btn-warning" type="button">View All Customers</button>
     </section>
 
