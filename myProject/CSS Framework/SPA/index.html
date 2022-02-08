@@ -107,107 +107,75 @@
             </thead>
         </table>
 
-        <form class="col-4" style="background-color: white;display: inline-block">
-            <div class="modal-header" style="background-color: green">
-                <h5 class="modal-title">Customer Search</h5>
-            </div>
-            <section style="padding: 20px">
-                <div class="mb-3">
-                    <label class="form-label" for="exampleInputEmail1">Input Name/NIC/Tp Here</label>
-                    <input aria-describedby="emailHelp" class="form-control" id="exampleInputEmail1" type="email">
+        <section class="row mt-3 justify-content-around">
+            <form class="col-12 col-md-3" style="background-color: white;display: inline-block">
+                <div class="modal-header" style="background-color: green">
+                    <h5 class="modal-title">Customer Search</h5>
                 </div>
-                <button class="btn btn-primary col-3" type="submit">Search</button>
-                <select class="col-3">
-                    <option>Name</option>
-                </select>
-            </section>
-        </form>
-
-        <section class="col-6" style="display: inline-block">
-            <button class="btn btn-primary" data-bs-target="#myModal" data-bs-toggle="modal" type="button">Add New
-                Customer
-            </button>
-            <div class="modal" id="myModal">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header" style="background-color: green">
-                            <h5 class="modal-title">New Customer</h5>
-                            <button class="btn-close" data-bs-dismiss="modal" type="button"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form>
-                                <div class="mb-3">
-                                    <label class="form-label" for="exampleInputEmail20">Customer Id:</label>
-                                    <input aria-describedby="emailHelp" class="form-control" id="exampleInputEmail20"
-                                           type="email">
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label" for="exampleInputPassword21">Customer Name:</label>
-                                    <input class="form-control" id="exampleInputPassword21" type="password">
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label" for="exampleInputEmail23">Customer Address:</label>
-                                    <input aria-describedby="emailHelp" class="form-control" id="exampleInputEmail23"
-                                           type="email">
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label" for="exampleInputPassword22">Customer Salary:</label>
-                                    <input class="form-control" id="exampleInputPassword22" type="password">
-                                </div>
-                                <br>
-                                <sep></sep>
-
-                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                    <button class="btn btn-danger me-md-2" type="button">Save</button>
-                                    <button class="btn btn-warning" type="button">Renew</button>
-                                    <button class="btn btn-primary" type="button">Close</button>
-                                </div>
-                            </form>
-                        </div>
+                <section style="padding: 20px">
+                    <div class="mb-3">
+                        <label class="form-label" for="exampleInputEmail1">Input Name/NIC/Tp Here</label>
+                        <input aria-describedby="emailHelp" class="form-control" id="exampleInputEmail1" type="email">
                     </div>
+                    <button class="btn btn-primary col-3" type="submit">Search</button>
+                    <select class="col-3">
+                        <option>Name</option>
+                    </select>
+                </section>
+            </form>
+
+            <section class="col-12 col-md-3" style="display: inline-block">
+                <button class="btn btn-primary" id="saveCustomer" type="button">Add New
+                    Customer
+                </button>
+
+                <button class="btn btn-warning" type="button">View All Customers</button>
+            </section>
+
+            <div class="col-6 col-md-5">
+                <div class="mb-3">
+                    <label class="form-label" for="custID">Customer ID</label>
+                    <input class="form-control" id="custId" placeholder="Customer ID" type="text">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="custName">Customer Name</label>
+                    <input class="form-control" id="custName" placeholder="Customer Name" type="text">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="custAddress">Customer Address</label>
+                    <input class="form-control" id="custAddress" placeholder="Customer Address" type="text">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="custTP">Customer Tp</label>
+                    <input class="form-control" id="custTP" placeholder="Customer Tp" type="text">
                 </div>
             </div>
-            <button class="btn btn-warning" type="button">View All Customers</button>
         </section>
-
         <section style="padding: 20px">
             <button class="btn btn-danger" type="button">Delete</button>
             <button class="btn btn-primary" type="button">Details</button>
             <button class="btn btn-success" type="button">Clear</button>
         </section>
 
-        <section>
-            <table class="table">
-                <thead class="table-dark">
-                <tr>
-                    <th scope="col">Customer Id</th>
-                    <th scope="col">Customer Name</th>
-                    <th scope="col">Address</th>
-                    <th scope="col">Salary</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <th scope="row">C003</th>
-                    <td>Malitha</td>
-                    <td>Panadura</td>
-                    <td>10000.00</td>
-                </tr>
-                <tr>
-                    <th scope="row">C004</th>
-                    <td>Siripala</td>
-                    <td>Galle</td>
-                    <td>24000.00</td>
-                </tr>
-                <tr>
-                    <th scope="row">C005</th>
-                    <td>Jinadasa</td>
-                    <td>Panadura</td>
-                    <td>94000.00</td>
-                </tr>
-                </tbody>
-            </table>
+        <section class="row mt-4">
+            <div class="col">
+                <table class="table table-hover">
+                    <thead class="bg-danger text-white">
+                    <tr>
+                        <th>Customer ID</th>
+                        <th>Customer Name</th>
+                        <th>Customer Address</th>
+                        <th>Customer Tp.</th>
+                    </tr>
+                    </thead>
+                    <tbody id="customerTable">
+
+
+                    </tbody>
+                </table>
+            </div>
         </section>
+
     </section>
 </section>
 
@@ -225,107 +193,69 @@
             </tr>
             </thead>
         </table>
-
-        <form class="col-4" style="background-color: white; display: inline-block">
-            <div class="modal-header" style="background-color: green">
-                <h5 class="modal-title">Item Search</h5>
-            </div>
-            <section style="padding: 20px">
-                <div class="mb-3">
-                    <label class="form-label" for="exampleInputEmail11">Input Item Name/Code Here</label>
-                    <input aria-describedby="emailHelp" class="form-control" id="exampleInputEmail11" type="email">
+        <section class="row mt-3 justify-content-around">
+            <form class="col-12 col-md-3" style="background-color: white; display: inline-block">
+                <div class="modal-header" style="background-color: green">
+                    <h5 class="modal-title">Item Search</h5>
                 </div>
-                <button class="btn btn-primary col-3" type="submit">Search</button>
-                <select class="col-3">
-                    <option>Name</option>
-                </select>
-            </section>
-        </form>
-
-
-        <section class="col-6" style="display: inline-block">
-            <button class="btn btn-primary" data-bs-target="#myModal" data-bs-toggle="modal" type="button">New Item
-            </button>
-            <div class="modal" id="myModal2">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header" style="background-color: green">
-                            <h5 class="modal-title">New Item</h5>
-                            <button class="btn-close" data-bs-dismiss="modal" type="button"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form>
-                                <div class="mb-3">
-                                    <label class="form-label" for="exampleInputEmail33">Item Code:</label>
-                                    <input aria-describedby="emailHelp" class="form-control" id="exampleInputEmail33"
-                                           type="email">
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label" for="exampleInputPassword32">Item Name:</label>
-                                    <input class="form-control" id="exampleInputPassword32" type="password">
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label" for="exampleInputEmail31">Item Price:</label>
-                                    <input aria-describedby="emailHelp" class="form-control" id="exampleInputEmail31"
-                                           type="email">
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label" for="exampleInputPassword30">Item Quantity:</label>
-                                    <input class="form-control" id="exampleInputPassword30" type="password">
-                                </div>
-                                <br>
-                                <sep></sep>
-
-                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                    <button class="btn btn-danger me-md-2" type="button">Save</button>
-                                    <button class="btn btn-warning" type="button">Renew</button>
-                                    <button class="btn btn-primary" type="button">Close</button>
-                                </div>
-                            </form>
-                        </div>
+                <section style="padding: 20px">
+                    <div class="mb-3">
+                        <label class="form-label" for="exampleInputEmail11">Input Item Name/Code Here</label>
+                        <input aria-describedby="emailHelp" class="form-control" id="exampleInputEmail11" type="email">
                     </div>
+                    <button class="btn btn-primary col-3" type="submit">Search</button>
+                    <select class="col-3">
+                        <option>Name</option>
+                    </select>
+                </section>
+            </form>
+
+            <section class="col-12 col-md-3" style="display: inline-block">
+                <button id="saveItem" class="btn btn-primary" type="button">New Item</button>
+                <button class="btn btn-warning" type="button">View All Items</button>
+            </section>
+            <div class="col-12 col-md-5">
+                <div class="mb-3">
+                    <label class="form-label" for="itemCode">Item Code</label>
+                    <input class="form-control" id="itemCode" placeholder="Item Code" type="text">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="itemName">Item Name</label>
+                    <input class="form-control" id="itemName" placeholder="Item Name" type="text">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="itemQty">Item Qty</label>
+                    <input class="form-control" id="itemQty" placeholder="Item Qty" type="text">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="itemPrice">Item Price</label>
+                    <input class="form-control" id="itemPrice" placeholder="Item Price" type="text">
                 </div>
             </div>
-            <button class="btn btn-warning" type="button">View All Items</button>
         </section>
-
         <section style="padding: 20px">
             <button class="btn btn-danger" type="button">Delete</button>
             <button class="btn btn-primary" type="button">Details</button>
             <button class="btn btn-success" type="button">Clear</button>
         </section>
 
-        <section>
-            <table class="table">
-                <thead class="table-dark">
-                <tr>
-                    <th scope="col">Item Name</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Quantity</th>
-                    <th scope="col">Price</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <th scope="row">111</th>
-                    <td>1111</td>
-                    <td>11.00</td>
-                    <td>111</td>
-                </tr>
-                <tr>
-                    <th scope="row">P002</th>
-                    <td>Keerisamba 5kg</td>
-                    <td>525.00</td>
-                    <td>200</td>
-                </tr>
-                <tr>
-                    <th scope="row">P003</th>
-                    <td>Keerisamba 10kg</td>
-                    <td>995.00</td>
-                    <td>36</td>
-                </tr>
-                </tbody>
-            </table>
+
+        <section class="row mt-4">
+            <div class="col">
+                <table class="table table-hover">
+                    <thead class="bg-danger text-white">
+                    <tr>
+                        <th scope="col">Item Code</th>
+                        <th scope="col">Item Name</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Price</th>
+                    </tr>
+                    </thead>
+                    <tbody id="itemTable">
+
+                    </tbody>
+                </table>
+            </div>
         </section>
     </section>
 </section>
@@ -465,7 +395,7 @@
     </section>
 </section>
 <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+<script src="assets/jQuery/jquery-3.6.0.min.js"></script>
 <script>
     var demo1 = document.getElementById("customerClass");
     demo1.style.display = "none";
@@ -501,6 +431,165 @@
         demo2.style.display = "none";
         demo1.style.display = "none";
         demo4.style.display = "inline";
+    });
+
+    /*Table Data*/
+
+    /*Customer*/
+
+    $("#custId").keydown(function (event) { // event data object
+
+        if (event.key == "Enter") {
+            $("#custName").focus();
+        }
+    });
+
+    $("#custName").keydown(function (event) { // event data object
+        if (event.key == "Enter") { // if the enter key press
+            $("#custAddress").focus();
+        }
+    });
+
+    $("#custAddress").keydown(function (event) { // event data object
+        if (event.key == "Enter") { // if the enter key press
+            $("#custTP").focus();
+        }
+    });
+
+    $("#custTP").keydown(function (event) { // event data object
+        if (event.key == "Enter") { // if the enter key press
+            $("#customerTable>tr").off("click");
+
+            let customerID = $("#custId").val();
+            let customerName = $("#custName").val();
+            let customerAddress = $("#custAddress").val();
+            let customersalary = $("#custTP").val();
+
+            let row = `<tr><td>${customerID}</td><td>${customerName}</td><td>${customerAddress}</td><td>${customersalary}</td></tr>`;
+
+            $("#customerTable").append(row);
+
+            $("#customerTable>tr").click(function () {
+
+                let cusID = $(this).children(":eq(0)").text(); // select first td and get text
+                let cusName = $(this).children(":eq(1)").text();
+                let cusAddress = $(this).children(":eq(2)").text();
+                let cusTP = $(this).children(":eq(3)").text();
+
+                $("#custId").val(cusID);
+                $("#custName").val(cusName);
+                $("#custAddress").val(cusAddress);
+                $("#custTP").val(cusTP);
+
+            });
+        }
+    });
+
+    $("#saveCustomer").click(function () {
+        $("#customerTable>tr").off("click");
+
+        let customerID = $("#custId").val();
+        let customerName = $("#custName").val();
+        let customerAddress = $("#custAddress").val();
+        let customersalary = $("#custTP").val();
+
+        let row = `<tr><td>${customerID}</td><td>${customerName}</td><td>${customerAddress}</td><td>${customersalary}</td></tr>`;
+
+        $("#customerTable").append(row);
+
+        $("#customerTable>tr").click(function () {
+
+            let cusID = $(this).children(":eq(0)").text(); // select first td and get text
+            let cusName = $(this).children(":eq(1)").text();
+            let cusAddress = $(this).children(":eq(2)").text();
+            let cusTP = $(this).children(":eq(3)").text();
+
+            $("#custId").val(cusID);
+            $("#custName").val(cusName);
+            $("#custAddress").val(cusAddress);
+            $("#custTP").val(cusTP);
+
+        });
+
+    });
+
+
+
+    $("#itemCode").keydown(function (event) { // event data object
+
+        if (event.key == "Enter") {
+            $("#itemName").focus();
+        }
+    });
+
+    $("#itemName").keydown(function (event) { // event data object
+        if (event.key == "Enter") { // if the enter key press
+            $("#itemQty").focus();
+        }
+    });
+
+    $("#itemQty").keydown(function (event) { // event data object
+        if (event.key == "Enter") { // if the enter key press
+            $("#itemPrice").focus();
+        }
+    });
+
+    $("#itemPrice").keydown(function (event) { // event data object
+        if (event.key == "Enter") { // if the enter key press
+            $("#itemTable>tr").off("click");
+
+            let itemCode = $("#itemCode").val();
+            let itemName = $("#itemName").val();
+            let itemQty = $("#itemQty").val();
+            let itemPrice = $("#itemPrice").val();
+
+            let row = `<tr><td>${itemCode}</td><td>${itemName}</td><td>${itemQty}</td><td>${itemPrice}</td></tr>`;
+
+            $("#itemTable").append(row);
+
+            $("#itemTable>tr").click(function () {
+
+                let itemCode = $(this).children(":eq(0)").text(); // select first td and get text
+                let itemName = $(this).children(":eq(1)").text();
+                let itemQty = $(this).children(":eq(2)").text();
+                let itemPrice = $(this).children(":eq(3)").text();
+
+                $("#itemCode").val(itemCode);
+                $("#itemName").val(itemName);
+                $("#itemQty").val(itemQty);
+                $("#itemPrice").val(itemPrice);
+
+            });
+        }
+    });
+
+    $("#saveItem").click(function () {
+
+        $("#itemTable>tr").off("click");
+
+        let itemCode = $("#itemCode").val();
+        let itemName = $("#itemName").val();
+        let itemQty = $("#itemQty").val();
+        let itemPrice = $("#itemQty").val();
+
+        let row = `<tr><td>${itemCode}</td><td>${itemName}</td><td>${itemQty}</td><td>${itemPrice}</td></tr>`;
+
+        $("#itemTable").append(row);
+
+
+        $("#itemTable>tr").click(function () {
+
+            let itemCode = $(this).children(":eq(0)").text(); // select first td and get text
+            let itemName = $(this).children(":eq(1)").text();
+            let itemQty = $(this).children(":eq(2)").text();
+            let itemPrice = $(this).children(":eq(3)").text();
+
+            $("#itemCode").val(itemCode);
+            $("#itemName").val(itemName);
+            $("#itemQty").val(itemQty);
+            $("#itemPrice").val(itemPrice);
+
+        });
     });
 </script>
 </body>
