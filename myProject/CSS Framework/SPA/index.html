@@ -115,9 +115,9 @@
                 <section style="padding: 20px">
                     <div class="mb-3">
                         <label class="form-label" for="exampleInputEmail1">Input Name/NIC/Tp Here</label>
-                        <input aria-describedby="emailHelp" class="form-control" id="exampleInputEmail1" type="email">
+                        <input id="customerIdSearch" aria-describedby="emailHelp" class="form-control" id="exampleInputEmail1" type="text">
                     </div>
-                    <button class="btn btn-primary col-3" type="submit">Search</button>
+                    <button id="searchCustomer" class="btn btn-primary col-3" type="submit">Search</button>
                     <select class="col-3">
                         <option>Name</option>
                     </select>
@@ -205,9 +205,9 @@
                 <section style="padding: 20px">
                     <div class="mb-3">
                         <label class="form-label" for="exampleInputEmail11">Input Item Name/Code Here</label>
-                        <input aria-describedby="emailHelp" class="form-control" id="exampleInputEmail11" type="email">
+                        <input aria-describedby="emailHelp" class="form-control" id="exampleInputEmail11" type="text">
                     </div>
-                    <button class="btn btn-primary col-3" type="submit">Search</button>
+                    <button id="searchItem" class="btn btn-primary col-3" type="submit">Search</button>
                     <select class="col-3">
                         <option>Name</option>
                     </select>
@@ -404,6 +404,7 @@
 </section>
 <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="assets/jQuery/jquery-3.6.0.min.js"></script>
+<script src="assets/db/DB.js"></script>
 <script>
     var demo1 = document.getElementById("customerClass");
     demo1.style.display = "none";
@@ -446,6 +447,8 @@
     /*Customer*/
     enableBtn();
 
+
+
     $("#custId").keydown(function (event) { // event data object
 
         if (event.key == "Enter") {
@@ -487,21 +490,78 @@
         }
     });
 
-    function saveCus() {
-        $("#customerTable>tr").off("click");
-
+    function saveCustomer() {
         let customerID = $("#custId").val();
         let customerName = $("#custName").val();
         let customerAddress = $("#custAddress").val();
         let customersalary = $("#custTP").val();
 
-        let row = `<tr><td>${customerID}</td><td>${customerName}</td><td>${customerAddress}</td><td>${customersalary}</td></tr>`;
+        var customerObject = {
+            id: customerID,
+            name: customerName,
+            address: customerAddress,
+            salary: customersalary
+        };
+        customerDB.push(customerObject);
+    }
 
-        $("#customerTable").append(row);
+    function clearAll() {
+        $('#custId,#custName,#custAddress,#custTP').val("");
+        $('#custId,#custName,#custAddress,#custTP').css('border', '2px solid #ced4da');
+        $('#custId').focus();
+        $("#saveCustomer").attr('disabled', true);
+        loadAllCustomers();
+    }
+
+    function loadAllCustomers() {
+        $("#customerTable").empty();
+        for (var i of customerDB) {
+            let row = `<tr><td>${i.id}</td><td>${i.name}</td><td>${i.address}</td><td>${i.salary}</td></tr>`;
+            $("#customerTable").append(row);
+        }
+    }
+
+    $("#searchCustomer").click(function () {
+        var searchID = $("#customerIdSearch").val();
+
+        var response = searchCustomer(searchID);
+        if (response) {
+            $("#custId").val(response.id);
+            $("#custName").val(response.name);
+            $("#custAddress").val(response.address);
+            $("#custTP").val(response.salary);
+        }else{
+            clearAll();
+            alert("No Such a Customer");
+        }
+    });
+
+    function searchCustomer(id) {
+        for (let i = 0; i < customerDB.length; i++) {
+            if (customerDB[i].id == id) {
+                return customerDB[i];
+            }
+        }
+    }
+
+    function deleteCustomer(id) {
+        for (let i = 0; i < customerDB.length; i++) {
+            if (customerDB[i].id == id) {
+                customerDB.splice(i,1);
+            }
+        }
+        loadAllCustomers();
+        return;
+    }
+
+    function saveCus() {
+        saveCustomer();
+        clearAll();
+        loadAllCustomers();
 
         $("#customerTable>tr").click(function () {
             var rIndex = this.rowIndex;
-            let cusID = $(this).children(":eq(0)").text(); // select first td and get text
+            let cusID = $(this).children(":eq(0)").text();
             let cusName = $(this).children(":eq(1)").text();
             let cusAddress = $(this).children(":eq(2)").text();
             let cusTP = $(this).children(":eq(3)").text();
@@ -511,21 +571,28 @@
             $("#custAddress").val(cusAddress);
             $("#custTP").val(cusTP);
 
-            console.log(rIndex);
             $("#updateCustomer").click(function () {
                 console.log(rIndex);
                 if(cusID==document.getElementById("custId").value) {
-                    tableCus.rows[rIndex].cells[1].innerHTML = document.getElementById("custName").value;
-                    tableCus.rows[rIndex].cells[2].innerHTML = document.getElementById("custAddress").value;
-                    tableCus.rows[rIndex].cells[3].innerHTML = document.getElementById("custTP").value;
+
+                    for (let i = 0; i < customerDB.length; i++) {
+                        if (customerDB[i].id == cusID) {
+                            customerDB[i].name= $("#custName").val();
+                            customerDB[i].address= $("#custAddress").val();
+                            customerDB[i].salary= $("#custTP").val();
+                            loadAllCustomers();
+                        }
+                    }
                 }
             });
         });
 
+
         $("#customerTable>tr").dblclick(function () {
+            let id = $(this).children(":eq(0)").text();
             let result = confirm("are you suwr?");
             if (result) {
-                $(this).remove();
+                deleteCustomer(id);
             }
         });
 
@@ -650,17 +717,75 @@
         saveItemNow();
     });
 
-    function saveItemNow() {
-        $("#itemTable>tr").off("click");
-
+    function saveItem() {
         let itemCode = $("#itemCode").val();
         let itemName = $("#itemName").val();
         let itemQty = $("#itemQty").val();
         let itemPrice = $("#itemPrice").val();
 
-        let row = `<tr><td>${itemCode}</td><td>${itemName}</td><td>${itemQty}</td><td>${itemPrice}</td></tr>`;
+        var itemObject = {
+            code: itemCode,
+            name: itemName,
+            qty: itemQty,
+            price: itemPrice
+        };
+        itemDB.push(itemObject);
+    }
 
-        $("#itemTable").append(row);
+    function clearAllItems() {
+        $('#itemCode,#itemName,#itemQty,#itemPrice').val("");
+        $('#itemCode,#itemName,#itemQty,#itemPrice').css('border', '2px solid #ced4da');
+        $('#itemCode').focus();
+        $("#saveItem").attr('disabled', true);
+        loadAllItems();
+    }
+
+    function loadAllItems() {
+        $("#itemTable").empty();
+        for (var i of itemDB) {
+            let row = `<tr><td>${i.code}</td><td>${i.name}</td><td>${i.qty}</td><td>${i.price}</td></tr>`;
+            $("#itemTable").append(row);
+        }
+    }
+
+    $("#searchItem").click(function () {
+        var searchID = $("#exampleInputEmail11").val();
+
+        var response = searchItem(searchID);
+        if (response) {
+            $("#itemCode").val(response.code);
+            $("#itemName").val(response.name);
+            $("#itemQty").val(response.qty);
+            $("#itemPrice").val(response.price);
+        }else{
+            clearAll();
+            alert("No Such a Customer");
+        }
+    });
+
+    function searchItem(id) {
+        for (let i = 0; i < itemDB.length; i++) {
+            if (itemDB[i].code == id) {
+                return itemDB[i];
+            }
+        }
+    }
+
+    function deleteItem(id) {
+        for (let i = 0; i < itemDB.length; i++) {
+            if (itemDB[i].code == id) {
+                itemDB.splice(i,1);
+            }
+        }
+        loadAllItems();
+        return;
+    }
+
+    function saveItemNow() {
+        saveItem();
+        clearAllItems();
+        loadAllItems();
+
 
         $("#itemTable>tr").click(function () {
             var rIndex2 = this.rowIndex;
@@ -676,17 +801,23 @@
 
             $("#updateItem").click(function () {
                 if(itemCode==document.getElementById("itemCode").value) {
-                    tableIte.rows[rIndex2].cells[1].innerHTML = document.getElementById("itemName").value;
-                    tableIte.rows[rIndex2].cells[2].innerHTML = document.getElementById("itemQty").value;
-                    tableIte.rows[rIndex2].cells[3].innerHTML = document.getElementById("itemPrice").value;
+                    for (let i = 0; i < itemDB.length; i++) {
+                        if (itemDB[i].code == itemCode) {
+                            itemDB[i].name= $("#itemName").val();
+                            itemDB[i].qty= $("#itemQty").val();
+                            itemDB[i].price= $("#itemPrice").val();
+                            loadAllItems();
+                        }
+                    }
                 }
             });
         });
 
         $("#itemTable>tr").dblclick(function () {
+            let itemCode = $(this).children(":eq(0)").text();
             let result = confirm("are you suwr?");
             if (result) {
-                $(this).remove();
+                deleteItem(itemCode);
             }
         });
     }
